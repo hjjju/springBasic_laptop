@@ -8,13 +8,15 @@ import hello.core.member.MemberServiceImpl;
 public class MemberApp {
 
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
+//        MemberService memberService = new MemberServiceImpl(); //기존엔 직접생성
         Member member = new Member(1L, "memberA", Grade.VIP);
 
         memberService.join(member);
 
         Member findMember = memberService.findMember(member.getId());
-        System.out.println("member = " + member);
-        System.out.println("findMember = " + findMember);
+        System.out.println("new member = " + member.getName());
+        System.out.println("findMember = " + findMember.getName());
     }
 }
